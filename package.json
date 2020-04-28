@@ -4,15 +4,27 @@
   "description": "a simple redux form",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack-dev-server --hot --inline --mode development",
+    "build": "webpack"
   },
-  "author": "paparussian",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/paparussian/redux-form.git"
+  },
+  "author": "alberto paparusso",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/paparussian/redux-form/issues"
+  },
+  "homepage": "https://github.com/paparussian/redux-form#readme",
   "dependencies": {
     "redux": "^4.0.5",
     "redux-actions": "^2.6.5",
+    "redux-form": "^8.3.5"
+  },
+  "devDependencies": {
     "redux-devtools-extension": "^2.13.8",
-    "redux-form": "^8.3.5",
     "webpack": "^4.43.0",
     "webpack-cli": "^3.3.11",
     "webpack-dev-server": "^3.10.3"

@@ -15,12 +15,12 @@ function render(){
 
 }
 
-firstName.addEventListener('focus', (event) => {
-    event.target.value = selectors.getInput(store.getState());
+firstName.addEventListener('blur', (event) => {
+    store.dispatch(actions.handleFirstName());
 });
 
-lastName.addEventListener('focus', (event) => {
-    event.target.value = '';
+lastName.addEventListener('blur', (event) => {
+    store.dispatch(actions.handleLastName());
 });
 
 
@@ -32,4 +32,8 @@ submit.addEventListener('click', () => {
     store.dispatch(actions.handleChange());
 })
 
-console.log(store.getState())
+console.log(store.getState());
+
+/*faccio il subscribe per il render della value nell'element paragraph a ogni aggiornamento 
+è un' alternativa a "connect"che dovrà comunque essere poi inserita in sostituzione a subscribe*/
+store.subscribe(render);

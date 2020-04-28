@@ -1,6 +1,11 @@
 import {createAction} from 'redux-actions';
 
-export const HANDLE_CHANGE = 'HANDLE_CHANGE';
-export const handleChange = createAction(HANDLE_CHANGE);
+export const HANDLE_FIRSTNAME = 'HANDLE_FIRSTNAME';
+export const handleFirstName = createAction(HANDLE_FIRSTNAME);
 
-export default { handleChange };
+export const HANDLE_LASTNAME = 'HANDLE_LASTNAME';
+export const handleLastName = createAction(HANDLE_LASTNAME);
+
+
+
+export default { handleFirstName, handleLastName };

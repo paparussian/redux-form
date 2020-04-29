@@ -8,19 +8,19 @@ import store from './store';
 
 /*creo render() per renderizzare in HTML */
 
-const firstName = document.getElementById('firtsName');
-const lastName = document.getElementById('lastName');
+const userName = document.getElementById('userName');
+const password = document.getElementById('password');
 
 function render(){
 
 }
 
-firstName.addEventListener('blur', (event) => {
-    store.dispatch(actions.handleFirstName());
+userName.addEventListener('blur', (event) => {
+    store.dispatch(actions.handleUserName(userName.value));
 });
 
-lastName.addEventListener('blur', (event) => {
-    store.dispatch(actions.handleLastName());
+password.addEventListener('blur', (event) => {
+    store.dispatch(actions.handlePassword(password.value));
 });
 
 
@@ -32,7 +32,7 @@ submit.addEventListener('click', () => {
     store.dispatch(actions.handleChange());
 })
 
-console.log(store.getState());
+// console.log(store.getState());
 
 /*faccio il subscribe per il render della value nell'element paragraph a ogni aggiornamento 
 è un' alternativa a "connect"che dovrà comunque essere poi inserita in sostituzione a subscribe*/

@@ -1,12 +1,12 @@
-import { HANDLE_USERNAME, HANDLE_PASSWORD, HANDLE_CHANGE } from './actions';
+import { HANDLE_PASSWORD, HANDLE_CHANGE, USER_CHANGE } from './actions';
 
 const reducers = (state = {input: ''}, action) => {
     switch (action.type){
-        case HANDLE_USERNAME:
+        case USER_CHANGE:
             return {
                 ...state,
-                input: state.input + action.payload
-            };
+                payload: {input: userName.value} || {}
+            }
         case HANDLE_PASSWORD:
             return {
                 ...state,

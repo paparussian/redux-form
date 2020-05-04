@@ -17,7 +17,7 @@ function render(){
 }
 
 userName.addEventListener('change', () => {
-    store.dispatch(actions.handleUserName(userName.value));
+    store.dispatch(actions.changeUserValue());
 });
 
 password.addEventListener('change', () => {

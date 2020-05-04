@@ -5,7 +5,7 @@ const reducers = (state = {input: ''}, action) => {
         case HANDLE_USERNAME:
             return {
                 ...state,
-                input: state.input
+                input: state.input + action.payload
             };
         case HANDLE_PASSWORD:
             return {

@@ -16,12 +16,19 @@ function render(){
 
 }
 
-userName.addEventListener('blur', () => {
+userName.addEventListener('change', () => {
     store.dispatch(actions.handleUserName(userName.value));
 });
 
-password.addEventListener('blur', () => {
-    store.dispatch(actions.handlePassword(password.value));
+password.addEventListener('change', () => {
+    let regex = /^[0-9]*$/g;
+    if (regex.test(password.value)) {
+       return store.dispatch(actions.handlePassword(password.value));
+    } else {
+        window.alert('Password must contain only numbers');
+        password.focus();
+        password.value = '';
+    }
 });
 
 

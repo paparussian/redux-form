@@ -21,24 +21,23 @@ userName.addEventListener('change', () => {
 });
 
 password.addEventListener('change', () => {
-    let regex = /^[0-9]*$/g;
+    let regex = /^[0-9]*$/g;  //
     if (regex.test(password.value)) {
        return store.dispatch(actions.handlePassword(password.value));
     } else {
         window.alert('Password must contain only numbers');
         password.focus();
-        password.value = '';
     }
 });
 
 
-render();
+render(); // vado a prendere i valori allo store e metterli nel componente
 
 const submit = document.getElementById('submit');
 
 submit.addEventListener('click', () => {
-    store.dispatch(actions.handleChange());
-    paragraph.innerHTML = `Hello ${userName.value}!`;
+    store.dispatch(actions.handleChange()); // qui non succede nulla
+    paragraph.innerHTML = `Hello ${userName.value}!`; // cancellare questa riga - bad practice
 })
 
 /*faccio il subscribe per il render della value nell'element paragraph a ogni aggiornamento 

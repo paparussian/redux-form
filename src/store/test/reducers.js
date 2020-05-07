@@ -1,19 +1,27 @@
-import { HANDLE_PASSWORD, HANDLE_CHANGE, USER_CHANGE } from './actions';
+import { USER_CHANGE, RESET_FORM } from './actions';
 
-const reducers = (state = {input: ''}, action) => {
+export const initialState = () => {
+    return {name: '',
+     surname: '',
+     age: 0,
+     password: '',
+     confirmPassword: ''
+    }
+}
+
+/*scrivere funzione che controlla input*/
+
+
+
+const reducers = (state = initialState(), action) => {
     switch (action.type){
         case USER_CHANGE:
             return {
                 ...state,
-                payload: {input: userName.value} || {}
-            }
-        case HANDLE_PASSWORD:
-            return {
-                ...state,
-                input: state.input
+                [action.payload.key]:action.payload.value
             };
-        case HANDLE_CHANGE:
-            event.preventDefault();
+        case RESET_FORM:
+            return initialState();
         default:
             return state
     }

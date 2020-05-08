@@ -6,7 +6,6 @@ import {MyForm} from './components/pr-input';
 import {SubmitButton} from './components/pr-submit';
 import {ResetButton} from './components/pr-reset';
 import {ErrorMessage} from './components/pr-message';
-
 /*creo il redux store */
 import store from './store';
 

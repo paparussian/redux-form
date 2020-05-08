@@ -1,15 +1,31 @@
 import {LitElement, html} from 'lit-element';
-import { getInput } from '../store/test/selectors';
 import { ErrorMessage } from './pr-message';
 import {reducers} from '../store/test/index';
 import {actions, selectors} from '../store/test/index';
 import store from '../store/index';
 import { userChange, resetForm } from '../store/test/actions';
-import { connect } from '../store/test/connect.js'
+import { connect } from '../store/test/connect.js';
 
 
+export class MyForm extends connect(store)(LitElement) {
 
-export class MyForm extends LitElement {
+    static get properties () {
+        return {
+            name: {type: String},
+            surname: {type: String},
+            age: {type: Number},
+            password: {type: String},
+            confirmPassword: {type: String}
+                }
+    }
+
+    stateChanged(state) {
+        this.name = state.name;
+        this.surname = state.surname;
+        this.age = state.age;
+        this.password = state.password;
+        this.confirmPassword = state.confirmPassword;
+    }
 
     validateInput(e){
         const key = e.target.id,
@@ -29,11 +45,11 @@ export class MyForm extends LitElement {
             <form method={this.method} @submit="${this.checkEqualPwd}">
                 <div>
                     <label>Name:</label>
-                    <input type="text" id="name" placeholder="Name" @change=${this.validateInput} required>
+                    <input type="text" id="name" placeholder="Name" @change=${this.validateInput}>
                 </div> 
                 <div>
                 <label>Surname:</label>
-                <input type="text" id="surname" placeholder="Surname" @change=${this.validateInput} required>
+                <input type="text" id="surname" placeholder="Surname" @change=${this.validateInput}>
                 </div> 
                 <div> 
                     <label>Age:</label>
@@ -54,12 +70,24 @@ export class MyForm extends LitElement {
     }
 } 
 
-const mapStateToProps = (state) => {
+customElements.define('my-form',MyForm);
 
-}
+
+
+/*
+const mapStateToProps = state => ({
+    name: state.name,
+    surname: state.surname,
+    age: state.age,
+    password: state.password,
+    confirmPassword: state.confirmPassword
+});
+
 
 customElements.define(
     'my-form',
     connect(mapStateToProps, null)(MyForm)
 );
+*/
+
 

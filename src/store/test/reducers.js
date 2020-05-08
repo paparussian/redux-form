@@ -1,6 +1,6 @@
 import { USER_CHANGE, RESET_FORM } from './actions';
 
-export const initialState = () => {
+const initialState = () => {
     return {name: '',
      surname: '',
      age: 0,
@@ -9,17 +9,25 @@ export const initialState = () => {
     }
 }
 
-/*scrivere funzione che controlla input*/
+/* TODO - scrivere funzione che controlla input*/
 
-
+const checkInput = (state, payload) => {
+    const regexp = /[0-9]+/;
+    if (payload.key === 'age' && !payload.value.match(regexp)){
+        return state
+    } else {
+       return { 
+           ...state,
+           [payload.key]:payload.value
+        }
+    }
+}
 
 const reducers = (state = initialState(), action) => {
     switch (action.type){
         case USER_CHANGE:
-            return {
-                ...state,
-                [action.payload.key]:action.payload.value
-            };
+            return 
+                checkInput(state, action.payload);
         case RESET_FORM:
             return initialState();
         default:

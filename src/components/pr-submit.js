@@ -1,7 +1,4 @@
 import {LitElement, html} from 'lit-element';
-import { MyForm } from './pr-input';
-import { userChange } from '../store/test/actions';
-import store from '../store';
 
 export class SubmitButton extends LitElement{
 
